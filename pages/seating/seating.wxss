@@ -1,0 +1,124 @@
+/* pages/seating/seating.wxss */
+page { background: #0D0D0D; }
+.page { background: #0D0D0D; min-height: 100vh; padding-bottom: 150rpx; }
+
+/* Header */
+.header { display:flex; flex-direction:column; align-items:center; padding:36rpx 0 16rpx; }
+.h-title { font-size:42rpx; font-weight:800; color:#fff; letter-spacing:6rpx; }
+.h-en    { font-size:20rpx; color:#555; letter-spacing:4rpx; margin-top:4rpx; }
+
+/* Legend */
+.legend { display:flex; justify-content:center; gap:32rpx; padding:0 24rpx 20rpx; }
+.lg-item { display:flex; align-items:center; gap:8rpx; }
+.lg-dot  { width:26rpx; height:26rpx; border-radius:6rpx; }
+.lg-dot.free  { background:#1E3A1E; border:1rpx solid #2E5A2E; }
+.lg-dot.taken { background:#3A1A1A; border:1rpx solid #5A2A2A; }
+.lg-dot.sel   { background:#C8171D; border:1rpx solid #C8171D; }
+.lg-txt { font-size:22rpx; color:#888; }
+
+/* Scroll area */
+.content { padding:0 24rpx; }
+
+/* Zone card */
+.zone-card {
+  background:#111; border:1rpx solid #222;
+  border-radius:20rpx; margin-bottom:20rpx;
+  overflow:hidden;
+}
+
+.zone-hd {
+  display:flex; align-items:center; gap:16rpx;
+  padding:22rpx 24rpx 18rpx;
+  border-bottom:1rpx solid #1A1A1A;
+}
+.zone-icon { font-size:36rpx; line-height:1; }
+.zone-title-wrap { display:flex; flex-direction:column; gap:2rpx; }
+.zone-name { font-size:28rpx; font-weight:700; color:#fff; letter-spacing:2rpx; }
+.zone-en   { font-size:18rpx; color:#444; letter-spacing:3rpx; }
+
+/* Table tiles grid */
+.zone-body {
+  display:flex; flex-direction:row; flex-wrap:wrap;
+  gap:16rpx; padding:20rpx 24rpx;
+}
+
+.tbl-card {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  width:150rpx; min-height:110rpx;
+  border-radius:16rpx; border:2rpx solid;
+  padding:12rpx 8rpx;
+}
+.tbl-card:active { transform:scale(0.93); }
+
+.tbl-card.st-free     { background:#161E16; border-color:#2A3A2A; }
+.tbl-card.st-taken    { background:#2A1A1A; border-color:#5A2A2A; opacity:0.5; }
+.tbl-card.st-taken:active { transform:none; }
+.tbl-card.st-selected { background:#C8171D; border-color:#C8171D; }
+
+.tc-num { font-size:32rpx; font-weight:800; color:#fff; }
+.tc-cap { font-size:22rpx; color:rgba(255,255,255,0.6); margin-top:4rpx; }
+
+/* Bottom selected bar */
+.sel-bar {
+  position:fixed; bottom:110rpx; left:0; right:0;
+  background:#1A1A1A; border-top:1rpx solid #2A2A2A;
+  padding:18rpx 28rpx; display:flex; align-items:center; justify-content:space-between; z-index:10;
+}
+.sel-bar.empty { justify-content:center; }
+.sel-info { display:flex; flex-direction:column; }
+.sel-tbl  { font-size:30rpx; font-weight:700; color:#fff; }
+.sel-det  { font-size:22rpx; color:#888; margin-top:4rpx; }
+.sel-hint { font-size:24rpx; color:#555; }
+.ok-btn   { background:#C8171D; border-radius:40rpx; padding:16rpx 32rpx; }
+.ok-btn:active { opacity:0.75; }
+.ok-txt   { font-size:26rpx; font-weight:700; color:#fff; }
+
+/* Form modal */
+.mask  { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.75); z-index:50; display:flex; align-items:flex-end; }
+.form-card { background:#1A1A1A; border-radius:28rpx 28rpx 0 0; width:100%; padding:40rpx 36rpx 40rpx; max-height:80vh; }
+.fc-title  { display:block; font-size:34rpx; font-weight:700; color:#fff; margin-bottom:6rpx; }
+.fc-sub    { display:block; font-size:22rpx; color:#888; margin-bottom:32rpx; }
+.fg { margin-bottom:26rpx; }
+.fl { display:block; font-size:28rpx; color:#888; margin-bottom:10rpx; }
+.fi { background:#111; border:1rpx solid #2A2A2A; border-radius:12rpx; padding:24rpx 24rpx; font-size:34rpx; color:#fff; width:100%; box-sizing:border-box; }
+.fv { background:#111; border:1rpx solid #2A2A2A; border-radius:12rpx; padding:24rpx 24rpx; font-size:32rpx; color:#fff; }
+.fa { display:flex; gap:16rpx; margin-top:32rpx; }
+.fc { flex:1; text-align:center; padding:22rpx 0; border-radius:14rpx; border:1rpx solid #2A2A2A; font-size:26rpx; color:#888; }
+.fo { flex:2; text-align:center; padding:22rpx 0; border-radius:14rpx; background:#C8171D; font-size:26rpx; font-weight:700; color:#fff; }
+.fo:active { opacity:0.8; }
+
+/* Invite card */
+.card-mask { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.92); z-index:100; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24rpx; }
+.invite-card { background:#1A1208; border:1rpx solid #C9A84C; border-radius:24rpx; width:100%; max-width:680rpx; overflow:hidden; }
+.ic-top  { background:linear-gradient(135deg,#0D0D0D 0%,#1A0F00 100%); padding:32rpx 32rpx 24rpx; }
+.ic-brand { display:flex; align-items:center; gap:16rpx; margin-bottom:20rpx; }
+.ic-xi   { font-size:50rpx; font-weight:900; color:#C8171D; line-height:1; }
+.ic-en   { display:block; font-size:26rpx; font-weight:800; color:#fff; letter-spacing:4rpx; }
+.ic-cn   { display:block; font-size:18rpx; color:#888; margin-top:2rpx; }
+.ic-title    { display:block; font-size:26rpx; font-weight:700; color:#C9A84C; letter-spacing:3rpx; }
+.ic-title-en { display:block; font-size:18rpx; color:rgba(201,168,76,0.6); margin-top:4rpx; }
+.ic-divider  { height:1rpx; background:#C9A84C; opacity:0.25; }
+.ic-body { padding:24rpx 32rpx 16rpx; }
+.ic-row  { display:flex; align-items:baseline; margin-bottom:16rpx; }
+.ic-lbl  { font-size:22rpx; color:#888; width:80rpx; letter-spacing:2rpx; flex-shrink:0; }
+.ic-val  { font-size:27rpx; color:#fff; font-weight:500; flex:1; }
+.ic-val.gold { color:#C9A84C; font-weight:700; font-size:30rpx; }
+.ic-code-block { background:rgba(0,0,0,0.35); margin:0 24rpx 24rpx; border-radius:16rpx; padding:22rpx; display:flex; flex-direction:column; align-items:center; }
+.ic-code-lbl { font-size:18rpx; color:#888; letter-spacing:4rpx; margin-bottom:6rpx; }
+.ic-code     { font-size:52rpx; font-weight:900; color:#C8171D; letter-spacing:10rpx; }
+.ic-code-hint { font-size:18rpx; color:#555; margin-top:4rpx; }
+.ic-foot { padding:16rpx 32rpx 24rpx; display:flex; flex-direction:column; align-items:center; gap:6rpx; }
+.ic-addr  { font-size:20rpx; color:#888; }
+.ic-phone { font-size:20rpx; color:#888; }
+.ic-hours { font-size:18rpx; color:#555; }
+.ca { display:flex; gap:14rpx; margin-top:24rpx; width:100%; max-width:680rpx; }
+.cb { flex:1; text-align:center; padding:26rpx 0; border-radius:16rpx; font-size:26rpx; font-weight:600; }
+.cb.share { background:#C8171D; color:#fff; }
+.cb.cancel { background:#3A1A1A; border:1rpx solid #5A2A2A; color:#ff6b6b; }
+.cb.close { background:#1A1A1A; border:1rpx solid #2A2A2A; color:#888; }
+.cb:active { opacity:0.75; }
+
+/* Deposit info on invite card */
+.ic-deposit { padding:12rpx 32rpx; display:flex; justify-content:center; }
+.ic-deposit-lbl { font-size:22rpx; color:#4CAF50; font-weight:600; }
+.ic-deposit-lbl.warn { color:#ffa726; }

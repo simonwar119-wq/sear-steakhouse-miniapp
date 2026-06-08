@@ -1,0 +1,207 @@
+.reg-wrap {
+  padding: 48rpx 40rpx;
+  background: #0D0D0D;
+  min-height: 100vh;
+}
+
+.reg-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 0 56rpx;
+  border-bottom: 1rpx solid #2A2A2A;
+  margin-bottom: 48rpx;
+}
+
+.reg-brand {
+  font-size: 64rpx;
+  font-weight: bold;
+  color: #C8171D;
+  letter-spacing: 10rpx;
+}
+
+.reg-sub {
+  font-size: 22rpx;
+  color: #888888;
+  letter-spacing: 4rpx;
+  margin-top: 12rpx;
+}
+
+.reg-desc {
+  font-size: 28rpx;
+  color: #CCCCCC;
+  margin-top: 24rpx;
+}
+
+.form-wrap {
+  margin-bottom: 48rpx;
+}
+
+.form-item {
+  margin-bottom: 40rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 24rpx;
+  color: #888888;
+  letter-spacing: 2rpx;
+  margin-bottom: 16rpx;
+}
+
+.form-tip {
+  display: block;
+  font-size: 22rpx;
+  color: #555555;
+  margin-top: 10rpx;
+}
+
+.phone-btn {
+  background: #1A1A1A;
+  border: 2rpx solid #C8171D;
+  color: #C8171D;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  text-align: center;
+  width: 100%;
+}
+
+.phone-btn::after { border: none; }
+
+.phone-btn-got {
+  background: #1A2A1A;
+  border: 2rpx solid #4CAF50;
+  color: #4CAF50;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  text-align: center;
+  width: 100%;
+}
+
+.phone-btn-got::after { border: none; }
+
+.birthday-row {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.picker-box {
+  background: #242424;
+  border: 1rpx solid #333333;
+  border-radius: 8rpx;
+  padding: 22rpx 32rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  min-width: 160rpx;
+  text-align: center;
+}
+
+.birthday-sep {
+  color: #888888;
+  font-size: 32rpx;
+}
+
+.benefits-box {
+  background: #1A1A1A;
+  border-radius: 12rpx;
+  padding: 36rpx;
+  margin-bottom: 48rpx;
+  border: 1rpx solid #2A2A2A;
+}
+
+.benefits-title {
+  font-size: 24rpx;
+  color: #888888;
+  letter-spacing: 4rpx;
+  display: block;
+  margin-bottom: 28rpx;
+}
+
+.benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+  margin-bottom: 18rpx;
+  font-size: 27rpx;
+  color: #DDDDDD;
+  line-height: 1.6;
+}
+
+.benefit-dot {
+  color: #C8171D;
+  font-size: 20rpx;
+  padding-top: 4rpx;
+}
+
+/* 注册成功弹层 */
+.success-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #0D0D0D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+}
+
+.success-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.success-icon {
+  font-size: 96rpx;
+}
+
+.success-title {
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 6rpx;
+}
+
+.success-brand {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #C8171D;
+  letter-spacing: 8rpx;
+}
+
+.coupon-box {
+  width: 100%;
+  background: #1A1A1A;
+  border: 2rpx dashed #C8171D;
+  border-radius: 12rpx;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  margin: 24rpx 0;
+}
+
+.coupon-label {
+  font-size: 22rpx;
+  color: #C8171D;
+  letter-spacing: 6rpx;
+  border: 1rpx solid #C8171D;
+  padding: 4rpx 16rpx;
+  border-radius: 4rpx;
+}
+
+.coupon-main {
+  font-size: 44rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+}
+
+.coupon-tip {
+  font-size: 24rpx;
+  color: #888888;
+}

@@ -1,0 +1,223 @@
+<!-- pages/admin/admin.wxml -->
+<view class="admin-wrap">
+
+  <!-- 检查中 -->
+  <view class="center-wrap" wx:if="{{checking}}">
+    <text style="color:#555">验证权限中...</text>
+  </view>
+
+  <!-- 非管理员 -->
+  <view class="no-access" wx:elif="{{!isAdmin}}">
+    <text class="no-access-icon">🔒</text>
+    <text class="no-access-title">仅限员工使用</text>
+    <text class="no-access-desc">此页面需要管理员权限</text>
+  </view>
+
+  <!-- 管理员面板 -->
+  <view wx:elif="{{isAdmin}}">
+
+    <view class="admin-header">
+      <text class="admin-title">员工管理后台</text>
+      <text class="admin-sub">SEAR STEAK · 会员积分系统</text>
+    </view>
+
+    <!-- 核销入口 -->
+    <view class="admin-tabs">
+      <view class="tab-item {{activeTab === 'booking' ? 'tab-active' : ''}}" bindtap="switchTab" data-tab="booking">预订管理</view>
+      <view class="tab-item {{activeTab === 'management' ? 'tab-active' : ''}}" bindtap="switchTab" data-tab="management">会员管理</view>
+      <view class="tab-item {{activeTab === 'redeem' ? 'tab-active' : ''}}" bindtap="switchTab" data-tab="redeem">核销验证</view>
+    </view>
+
+    <!-- Tab: 预订管理 -->
+    <view wx:if="{{activeTab === 'booking'}}" class="booking-section">
+      <view class="booking-date-row">
+        <text class="form-label">预订日期</text>
+        <picker mode="date" value="{{bookingDate}}" bindchange="onBookingDateChange">
+          <view class="booking-date-picker">{{bookingDate}}</view>
+        </picker>
+      </view>
+
+      <view wx:if="{{bookings.length === 0}}" class="empty-tip"><text>暂无预订</text></view>
+
+      <view class="booking-item" wx:for="{{bookings}}" wx:key="_id">
+        <view class="bi-top">
+          <text class="bi-time">{{item.time}}</text>
+          <text class="bi-table">{{item.table}} · {{item.zoneName}}</text>
+          <text class="bi-guests">{{item.guests}}人</text>
+        </view>
+        <view class="bi-mid">
+          <text class="bi-name">{{item.name}}</text>
+          <text class="bi-phone">{{item.phone}}</text>
+          <text class="bi-code">码: {{item.code}}</text>
+        </view>
+        <view class="bi-bot">
+          <!-- 状态标签 -->
+          <text class="bi-status st-{{item.status}}">
+            {{item.status === 'pending' ? '待消费' : item.status === 'arrived' ? '已到店' : item.status === 'no-show' ? '未到' : item.status === 'cancelled' ? '已取消' : item.status}}
+          </text>
+          <!-- 押金标签 -->
+          <text class="bi-deposit" wx:if="{{item.deposit > 0 && item.status === 'pending'}}" style="color:#ffa726">押金¥{{item.deposit}}</text>
+          <text class="bi-deposit" wx:elif="{{item.deposit > 0 && item.depositRelease}}" style="color:#4CAF50">押金已退</text>
+          <text class="bi-deposit" wx:elif="{{item.deposit > 0 && item.status === 'arrived' && !item.depositRelease}}" style="color:#ffa726">押金待退</text>
+          <text class="bi-member-tag" wx:if="{{item.memberSnap}}">会员</text>
+          <text class="bi-strikes" wx:if="{{item.memberId && item.status === 'no-show'}}">🚫{{' 已记录未到'}}</text>
+        </view>
+        <!-- 操作按钮 -->
+        <view class="bi-actions" wx:if="{{item.status === 'pending'}}">
+          <view class="bi-btn arrive" bindtap="bookingArrived" data-id="{{item._id}}">到店</view>
+          <view class="bi-btn noshow" bindtap="bookingNoShow" data-id="{{item._id}}">未到</view>
+        </view>
+        <view class="bi-actions" wx:elif="{{item.status === 'arrived' && item.deposit > 0 && !item.depositRelease}}">
+          <view class="bi-btn refund" bindtap="releaseDeposit" data-id="{{item._id}}">退押金</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Tab: 核销验证 -->
+    <view wx:if="{{activeTab === 'redeem'}}" class="redeem-verify-section">
+      <text class="form-label">输入核销码</text>
+      <view class="search-row">
+        <input
+          class="input-field"
+          placeholder="输入6位核销码"
+          placeholder-style="color:#555"
+          bindinput="onRedeemCodeInput"
+          value="{{redeemCodeInput}}"
+          maxlength="6"
+          type="number"
+        />
+        <button class="search-btn" bindtap="verifyRedeemCode" loading="{{verifying}}">核销</button>
+      </view>
+
+      <view wx:if="{{redeemVerifyResult}}" class="redeem-verify-result {{redeemVerifyResult.valid ? 'result-valid' : 'result-invalid'}}">
+        <text class="result-icon">{{redeemVerifyResult.valid ? '✅' : '❌'}}</text>
+        <view class="result-info">
+          <text class="result-title">{{redeemVerifyResult.valid ? '核销码有效' : '核销码无效'}}</text>
+          <text class="result-desc" wx:for="{{redeemVerifyResult.details}}" wx:key="*this">{{item}}</text>
+        </view>
+        <button wx:if="{{redeemVerifyResult.valid && !redeemVerifyResult.alreadyRedeemed}}" class="btn-confirm-redeem" bindtap="confirmRedeem" loading="{{confirmingRedeem}}">确认核销</button>
+      </view>
+    </view>
+
+    <!-- Tab: 会员管理（原所有管理功能） -->
+    <view class="search-section">
+      <text class="form-label">查找会员</text>
+      <view class="search-row">
+        <input
+          class="input-field"
+          placeholder="输入手机号或姓名"
+          placeholder-style="color:#555"
+          bindinput="onSearchInput"
+          value="{{searchKeyword}}"
+          type="text"
+        />
+        <button class="search-btn" bindtap="searchMember" loading="{{searching}}">查询</button>
+      </view>
+    </view>
+
+    <!-- 未找到 -->
+    <view class="empty-tip" wx:if="{{searched && !foundMember}}">
+      <text>未找到该会员</text>
+    </view>
+
+    <!-- 找到的会员 -->
+    <view class="found-member" wx:if="{{foundMember}}">
+      <text class="found-label">✓ 已找到会员</text>
+      <view class="found-info-grid">
+        <view class="found-info-item">
+          <text class="found-info-label">会员编号</text>
+          <text class="found-info-value">{{foundMember.memberId || '—'}}</text>
+        </view>
+        <view class="found-info-item">
+          <text class="found-info-label">姓名</text>
+          <text class="found-info-value">{{foundMember.name}}</text>
+        </view>
+        <view class="found-info-item">
+          <text class="found-info-label">手机号</text>
+          <text class="found-info-value">{{foundMember.phone}}</text>
+        </view>
+        <view class="found-info-item">
+          <text class="found-info-label">当前积分</text>
+          <text class="found-info-value points-highlight">{{foundMember.currentPoints}} 分</text>
+        </view>
+        <view class="found-info-item">
+          <text class="found-info-label">累计积分</text>
+          <text class="found-info-value">{{foundMember.cumulativePoints}} 分</text>
+        </view>
+        <view class="found-info-item">
+          <text class="found-info-label">等级</text>
+          <text class="found-info-value tier-text">{{foundMember.tier === 2 ? '金卡' : foundMember.tier === 1 ? '银卡' : '普通会员'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 管理员授权（找到会员后显示） -->
+    <view class="admin-grant-row" wx:if="{{foundMember}}">
+      <view wx:if="{{foundMember.isAdmin}}" class="admin-badge">
+        <text class="admin-badge-txt">🔑 当前为管理员</text>
+        <view class="btn-revoke" bindtap="revokeAdmin">撤销管理员</view>
+      </view>
+      <view wx:else class="btn-grant" bindtap="grantAdmin">
+        <text>授权为管理员</text>
+      </view>
+    </view>
+
+    <!-- 添加积分（找到会员后显示） -->
+    <view class="points-section" wx:if="{{foundMember}}">
+      <text class="form-label">本次消费金额（元）</text>
+      <input
+        class="input-field amount-input"
+        placeholder="输入金额，如：268"
+        placeholder-style="color:#555"
+        type="digit"
+        bindinput="onAmountInput"
+        value="{{amount}}"
+      />
+      <view class="points-preview" wx:if="{{showPointsPreview}}">
+        <text class="points-preview-label">可获得积分</text>
+        <text class="points-preview-value">+{{pointsToAdd}} 积分</text>
+      </view>
+      <button
+        class="btn-add-points"
+        bindtap="addPoints"
+        loading="{{submitting}}"
+        disabled="{{!canAddPoints}}"
+      >
+        确认添加积分
+      </button>
+    </view>
+
+    <!-- 小程序码 -->
+    <view class="qr-section">
+      <text class="section-title">小程序码</text>
+      <text class="qr-desc">生成后可保存图片，印刷在菜单或台卡上，客人扫码直接进入小程序</text>
+      <view wx:if="{{qrUrl}}" class="qr-preview">
+        <image src="{{qrUrl}}" class="qr-img" mode="aspectFit" show-menu-by-longpress="true"/>
+        <text class="qr-tip">长按图片可保存到相册</text>
+      </view>
+      <button class="btn-gen-qr" bindtap="generateQR" loading="{{generatingQR}}">
+        {{qrUrl ? '重新生成' : '生成小程序码'}}
+      </button>
+    </view>
+
+    <!-- 最近操作记录 -->
+    <view class="history-section">
+      <text class="section-title">最近操作记录</text>
+      <view wx:if="{{history.length === 0}}" class="empty-tip">
+        <text>暂无操作记录</text>
+      </view>
+      <view class="history-item" wx:for="{{history}}" wx:key="_id" wx:for-item="item">
+        <view class="history-left">
+          <text class="history-date">{{item.dateStr}}</text>
+          <text class="history-member">{{item.memberName}}</text>
+        </view>
+        <view class="history-right">
+          <text class="history-amount">¥{{item.amount}}</text>
+          <text class="history-points">+{{item.pointsDelta}}分</text>
+        </view>
+        <text class="history-staff">{{item.staffName || '员工'}}</text>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,133 @@
+<!-- pages/seating/seating.wxml -->
+<view class="page">
+
+  <view class="header">
+    <text class="h-title">选择座位 · 预订</text>
+    <text class="h-en">RESERVE YOUR TABLE</text>
+  </view>
+
+  <view class="legend">
+    <view class="lg-item"><view class="lg-dot free"></view><text class="lg-txt">可选</text></view>
+    <view class="lg-item"><view class="lg-dot taken"></view><text class="lg-txt">已订</text></view>
+    <view class="lg-item"><view class="lg-dot sel"></view><text class="lg-txt">已选</text></view>
+  </view>
+
+  <scroll-view scroll-y class="content">
+
+    <!-- 沙发卡座 -->
+    <view class="zone-card">
+      <view class="zone-hd">
+        <text class="zone-icon">🛋</text>
+        <view class="zone-title-wrap">
+          <text class="zone-name">沙发卡座</text>
+          <text class="zone-en">SOFA BOOTHS</text>
+        </view>
+      </view>
+      <view class="zone-body">
+        <view wx:for="{{tables}}" wx:key="id" wx:if="{{item.zone==='sofa'}}"
+          class="tbl-card st-{{item.status}}" data-id="{{item.id}}" bindtap="tapTable">
+          <text class="tc-num">{{item.label}}</text>
+          <text class="tc-cap">{{item.cap}}人</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 散台 -->
+    <view class="zone-card">
+      <view class="zone-hd">
+        <text class="zone-icon">🍽</text>
+        <view class="zone-title-wrap">
+          <text class="zone-name">散台</text>
+          <text class="zone-en">DINING TABLES</text>
+        </view>
+      </view>
+      <view class="zone-body">
+        <view wx:for="{{tables}}" wx:key="id" wx:if="{{item.zone==='dining'}}"
+          class="tbl-card st-{{item.status}}" data-id="{{item.id}}" bindtap="tapTable">
+          <text class="tc-num">{{item.label}}</text>
+          <text class="tc-cap">{{item.cap}}人</text>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+  <!-- 已选桌位栏 -->
+  <view class="sel-bar" wx:if="{{selectedTable}}">
+    <view class="sel-info">
+      <text class="sel-tbl">{{selectedTable.label}} 桌</text>
+      <text class="sel-det">{{selectedTable.zoneName}} · {{selectedTable.cap}}人桌</text>
+    </view>
+    <view class="ok-btn" bindtap="openForm"><text class="ok-txt">填写信息 →</text></view>
+  </view>
+  <view class="sel-bar empty" wx:else>
+    <text class="sel-hint">点击上方座位即可选择</text>
+  </view>
+
+  <!-- 预订表单弹窗 -->
+  <view class="mask" wx:if="{{showForm}}" bindtap="closeForm">
+    <view class="form-card" catchtap="noop">
+      <scroll-view scroll-y style="max-height:70vh;">
+      <text class="fc-title">预订信息</text>
+      <text class="fc-sub" wx:if="{{selectedTable}}">{{selectedTable.label}} · {{selectedTable.zoneName}} · {{selectedTable.cap}}人桌</text>
+      <view class="fg"><text class="fl">姓名</text><input class="fi" placeholder="请输入" value="{{formName}}" bindinput="onNameInput" cursor-spacing="40"/></view>
+      <view class="fg"><text class="fl">手机</text><input class="fi" type="number" maxlength="11" placeholder="请输入手机号" value="{{formPhone}}" bindinput="onPhoneInput" cursor-spacing="40"/></view>
+      <view class="fg"><text class="fl">日期</text>
+        <picker mode="date" value="{{formDate}}" bindchange="onDateChange"><view class="fv">{{formDate}}</view></picker>
+      </view>
+      <view class="fg"><text class="fl">时段</text>
+        <picker mode="selector" range="{{timeSlots}}" value="{{timeIndex}}" bindchange="onTimeChange"><view class="fv">{{timeSlots[timeIndex]}}</view></picker>
+      </view>
+      <view class="fg"><text class="fl">人数</text>
+        <picker mode="selector" range="{{guestRange}}" value="{{guestIndex}}" bindchange="onGuestChange"><view class="fv">{{guestRange[guestIndex]}}</view></picker>
+      </view>
+      <view class="fa">
+        <view class="fc" bindtap="closeForm"><text>取消</text></view>
+        <view class="fo" bindtap="confirmBooking"><text>确认预订</text></view>
+      </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 邀请卡 -->
+  <view class="card-mask" wx:if="{{showCard}}">
+    <view class="invite-card">
+      <view class="ic-top">
+        <view class="ic-brand"><text class="ic-xi">囍</text><view><text class="ic-en">SEAR STEAK</text><text class="ic-cn">天津五大道炙烤牛排</text></view></view>
+        <text class="ic-title">诚挚邀请您共赴美好时光</text>
+        <text class="ic-title-en">You're Cordially Invited</text>
+      </view>
+      <view class="ic-divider"></view>
+      <view class="ic-body">
+        <view class="ic-row"><text class="ic-lbl">宾客</text><text class="ic-val gold">{{booking.name}} 及同行</text></view>
+        <view class="ic-row"><text class="ic-lbl">日期</text><text class="ic-val">{{booking.date}}　{{booking.weekday}}</text></view>
+        <view class="ic-row"><text class="ic-lbl">时间</text><text class="ic-val">{{booking.time}}</text></view>
+        <view class="ic-row"><text class="ic-lbl">人数</text><text class="ic-val">{{booking.guests}}</text></view>
+        <view class="ic-row"><text class="ic-lbl">座位</text><text class="ic-val">{{booking.table}} · {{booking.zoneName}}</text></view>
+      </view>
+      <view class="ic-code-block">
+        <text class="ic-code-lbl">预 订 码</text>
+        <text class="ic-code">{{booking.code}}</text>
+        <text class="ic-code-hint">到店出示此页面告知服务员</text>
+      </view>
+      <view class="ic-divider"></view>
+      <!-- 押金信息 -->
+      <view class="ic-deposit" wx:if="{{booking.needsDeposit}}">
+        <text class="ic-deposit-lbl" wx:if="{{booking.depositPaid}}">✅ 押金已付 ¥100</text>
+        <text class="ic-deposit-lbl warn" wx:else>⏳ 押金待付 ¥100（到店联系员工）</text>
+      </view>
+      <view class="ic-divider" wx:if="{{booking.needsDeposit}}"></view>
+      <view class="ic-foot">
+        <text class="ic-addr">📍 天津市和平区常德道29号（五大道）</text>
+        <text class="ic-phone">📞 186 9055 0336</text>
+        <text class="ic-hours">每日 11:30 — 21:30</text>
+      </view>
+    </view>
+    <view class="ca">
+      <view class="cb share" bindtap="shareCard"><text>截图发给同行朋友</text></view>
+      <view class="cb cancel" bindtap="cancelBooking"><text>取消预订</text></view>
+      <view class="cb close" bindtap="closeCard"><text>关闭</text></view>
+    </view>
+  </view>
+
+</view>

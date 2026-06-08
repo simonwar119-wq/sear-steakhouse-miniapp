@@ -1,0 +1,10 @@
+{
+  "name": "ocrAndAddPoints",
+  "version": "1.0.0",
+  "description": "OCR识别小票 + 自动加积分（含MD5去重）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest",
+    "crypto-js": "^4.2.0"
+  }
+}

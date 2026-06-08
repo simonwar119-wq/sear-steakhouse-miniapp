@@ -1,0 +1,112 @@
+<!-- pages/register/register.wxml -->
+
+<!-- 注册成功弹层 -->
+<view wx:if="{{registered}}" class="success-overlay">
+  <view class="success-card">
+    <text class="success-icon">🎉</text>
+    <text class="success-title">欢迎加入</text>
+    <text class="success-brand">SEAR STEAK</text>
+    <view class="coupon-box">
+      <text class="coupon-label">注册礼</text>
+      <text class="coupon-main">餐后甜品 · 1份</text>
+      <text class="coupon-tip">本次用餐出示此页即可兑换</text>
+    </view>
+    <button class="btn-primary" bindtap="goHome">进入会员中心</button>
+  </view>
+</view>
+
+<!-- 注册表单 -->
+<scroll-view scroll-y wx:else style="height:100vh">
+  <view class="reg-wrap">
+
+    <!-- 品牌头部 -->
+    <view class="reg-header">
+      <text class="reg-brand">SEAR · STEAK</text>
+      <text class="reg-sub">PRIME · 囍er · 2017</text>
+      <text class="reg-desc">成为会员，享专属积分与礼遇</text>
+    </view>
+
+    <!-- 表单区 -->
+    <view class="form-wrap">
+
+      <!-- 姓名 -->
+      <view class="form-item">
+        <text class="form-label">姓名</text>
+        <input
+          class="input-field"
+          placeholder="请输入您的姓名"
+          placeholder-style="color:#555"
+          bindinput="onNameInput"
+          value="{{name}}"
+          maxlength="20"
+        />
+      </view>
+
+      <!-- 手机号（微信一键授权） -->
+      <view class="form-item">
+        <text class="form-label">手机号</text>
+        <button
+          open-type="getPhoneNumber"
+          bindgetphonenumber="onGetPhoneNumber"
+          class="{{phoneCode ? 'phone-btn-got' : 'phone-btn'}}"
+        >
+          {{phoneCode ? '✓ 手机号已授权' : '一键获取手机号'}}
+        </button>
+        <text class="form-tip">仅用于会员识别，不会外泄</text>
+      </view>
+
+      <!-- 生日（月/日） -->
+      <view class="form-item">
+        <text class="form-label">生日（享生日月专属优惠）</text>
+        <view class="birthday-row">
+          <picker mode="selector" range="{{months}}" value="{{monthIndex}}" bindchange="onMonthChange">
+            <view class="picker-box">{{months[monthIndex]}} 月</view>
+          </picker>
+          <text class="birthday-sep">·</text>
+          <picker mode="selector" range="{{days}}" value="{{dayIndex}}" bindchange="onDayChange">
+            <view class="picker-box">{{days[dayIndex]}} 日</view>
+          </picker>
+        </view>
+      </view>
+
+    </view>
+
+    <!-- 会员权益说明 -->
+    <view class="benefits-box">
+      <text class="benefits-title">会员权益一览</text>
+      <view class="benefit-row">
+        <text class="benefit-dot">◆</text>
+        <text>消费1元 = 1积分</text>
+      </view>
+      <view class="benefit-row">
+        <text class="benefit-dot">◆</text>
+        <text>3,000分 兑换阿图斯葡萄酒（价值¥368）</text>
+      </view>
+      <view class="benefit-row">
+        <text class="benefit-dot">◆</text>
+        <text>累计5,000分 升级银卡 · 永久9折</text>
+      </view>
+      <view class="benefit-row">
+        <text class="benefit-dot">◆</text>
+        <text>累计10,000分 升级金卡 · 永久8.5折</text>
+      </view>
+      <view class="benefit-row text-red">
+        <text class="benefit-dot">◆</text>
+        <text>今日注册 立赠餐后甜品一份</text>
+      </view>
+    </view>
+
+    <!-- 提交 -->
+    <view style="padding: 16rpx 0 60rpx">
+      <button
+        class="btn-primary"
+        bindtap="onSubmit"
+        loading="{{submitting}}"
+        disabled="{{submitting}}"
+      >
+        {{submitting ? '注册中...' : '立即注册 · 领取甜品'}}
+      </button>
+    </view>
+
+  </view>
+</scroll-view>

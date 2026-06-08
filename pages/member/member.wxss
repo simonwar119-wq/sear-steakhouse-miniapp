@@ -1,0 +1,264 @@
+.home-wrap {
+  padding: 32rpx;
+  background: #0D0D0D;
+  min-height: 100vh;
+}
+
+/* 会员卡 */
+.member-card {
+  background: linear-gradient(135deg, #1A1A1A 0%, #2A1A1A 100%);
+  border: 1rpx solid #C8171D;
+  border-radius: 20rpx;
+  padding: 48rpx 40rpx 40rpx;
+  margin-bottom: 32rpx;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32rpx;
+}
+
+.card-brand {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #C8171D;
+  letter-spacing: 6rpx;
+}
+
+.card-sub {
+  display: block;
+  font-size: 20rpx;
+  color: #888888;
+  letter-spacing: 4rpx;
+  margin-top: 6rpx;
+}
+
+.tier-badge {
+  border: 1rpx solid;
+  padding: 8rpx 20rpx;
+  border-radius: 40rpx;
+  font-size: 22rpx;
+  letter-spacing: 2rpx;
+}
+
+.birthday-banner {
+  background: #2A1A00;
+  border: 1rpx solid #C9A84C;
+  border-radius: 8rpx;
+  padding: 16rpx 24rpx;
+  font-size: 24rpx;
+  color: #C9A84C;
+  margin-bottom: 24rpx;
+  line-height: 1.5;
+}
+
+.card-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  letter-spacing: 4rpx;
+  margin-bottom: 8rpx;
+}
+
+.card-phone {
+  font-size: 24rpx;
+  color: #888888;
+  margin-bottom: 40rpx;
+}
+
+.points-display {
+  display: flex;
+  align-items: flex-end;
+  gap: 24rpx;
+  margin-bottom: 32rpx;
+}
+
+.points-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
+}
+
+.points-num {
+  font-size: 88rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.points-unit {
+  font-size: 28rpx;
+  color: #888888;
+}
+
+.discount-pill {
+  background: #C8171D;
+  color: #FFFFFF;
+  font-size: 26rpx;
+  font-weight: bold;
+  padding: 10rpx 24rpx;
+  border-radius: 40rpx;
+  letter-spacing: 2rpx;
+  margin-bottom: 12rpx;
+}
+
+.progress-wrap {
+  margin-top: 8rpx;
+}
+
+.progress-bar {
+  height: 6rpx;
+  background: #333333;
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #C8171D, #FF4444);
+  border-radius: 6rpx;
+  transition: width 0.3s;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gold-tip {
+  font-size: 22rpx;
+  color: #C9A84C;
+  text-align: center;
+  letter-spacing: 2rpx;
+}
+
+/* 快捷操作 */
+.quick-actions {
+  background: #1A1A1A;
+  border-radius: 16rpx;
+  display: flex;
+  margin-bottom: 32rpx;
+  overflow: hidden;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36rpx 0;
+  gap: 10rpx;
+}
+
+.action-icon {
+  font-size: 52rpx;
+}
+
+.action-text {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.action-sub {
+  font-size: 22rpx;
+  color: #888888;
+}
+
+.action-divider {
+  width: 1rpx;
+  background: #2A2A2A;
+  margin: 24rpx 0;
+}
+
+/* 信息卡片 */
+.info-card {
+  background: #1A1A1A;
+  border-radius: 16rpx;
+  padding: 36rpx;
+  margin-bottom: 24rpx;
+}
+
+.section-label {
+  display: block;
+  font-size: 22rpx;
+  color: #888888;
+  letter-spacing: 4rpx;
+  margin-bottom: 28rpx;
+}
+
+.rule-row {
+  display: flex;
+  gap: 14rpx;
+  margin-bottom: 18rpx;
+  line-height: 1.6;
+}
+
+.rule-dot {
+  color: #C8171D;
+  font-size: 18rpx;
+  flex-shrink: 0;
+  padding-top: 5rpx;
+}
+
+.rule-text {
+  font-size: 26rpx;
+  color: #CCCCCC;
+}
+
+/* 交易记录 */
+.tx-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #2A2A2A;
+}
+
+.tx-row:last-child {
+  border-bottom: none;
+}
+
+.tx-type {
+  display: block;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.tx-date {
+  display: block;
+  font-size: 22rpx;
+  color: #888888;
+  margin-top: 4rpx;
+}
+
+.points-plus { color: #4CAF50; font-size: 32rpx; font-weight: bold; }
+.points-minus { color: #C8171D; font-size: 32rpx; font-weight: bold; }
+
+.loading-wrap {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-txt {
+  color: #555555;
+  font-size: 28rpx;
+}
+
+.text-muted { color: #888888; }
+
+.share-section { padding: 24rpx 32rpx 48rpx; }
+.share-btn {
+  display: flex; align-items: center; justify-content: center; gap: 12rpx;
+  background: #1A1A1A; border: 1rpx solid #2A2A2A;
+  border-radius: 50rpx; padding: 26rpx 0; width: 100%;
+}
+.share-btn::after { border: none; }
+.share-icon { font-size: 32rpx; }
+.share-text { font-size: 28rpx; color: #888; letter-spacing: 2rpx; }

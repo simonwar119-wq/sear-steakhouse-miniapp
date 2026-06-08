@@ -1,0 +1,231 @@
+<!-- pages/home/home.wxml - SEAR STEAK Landing Page -->
+<view class="container">
+
+  <!-- ── Hero ── -->
+  <view class="hero">
+    <image class="hero-img" src="/images/steak-hero.jpg" mode="aspectFill" lazy-load></image>
+    <view class="hero-scrim"></view>
+    <view class="hero-overlay">
+      <view class="brand-lockup">
+        <text class="hero-xi">囍</text>
+        <view class="brand-right">
+          <text class="hero-brand">SEAR STEAK</text>
+          <text class="hero-tagline">一块好牛排，让牛肉本身说话</text>
+        </view>
+      </view>
+      <text class="hero-sub">PRIME STEAKHOUSE & WINE BAR</text>
+      <view class="hero-meta">
+        <text class="hero-meta-item">📍 天津五大道</text>
+        <text class="hero-meta-dot">·</text>
+        <text class="hero-meta-item">始于 2017</text>
+        <text class="hero-meta-dot">·</text>
+        <text class="hero-meta-item">USDA PRIME · 荔枝木炭烤</text>
+      </view>
+      <view class="hero-hours-badge">
+        <text class="hours-dot"></text>
+        <text class="hours-text">每日 11:30 — 21:30</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 精选招牌 ── -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">精选招牌</text>
+      <text class="section-en">SIGNATURES</text>
+    </view>
+    <scroll-view scroll-x class="feat-scroll" enhanced="true" show-scrollbar="false">
+      <view class="feat-list">
+        <view class="feat-card" bindtap="goMenu">
+          <image class="feat-img" src="/images/food-steak2.jpg" mode="aspectFill" lazy-load></image>
+          <view class="feat-info">
+            <text class="feat-name">PRIME 肋肉</text>
+            <text class="feat-tag">按克计价·精选</text>
+          </view>
+        </view>
+        <view class="feat-card" bindtap="goMenu">
+          <image class="feat-img" src="/images/food-steak1.jpg" mode="aspectFill" lazy-load></image>
+          <view class="feat-info">
+            <text class="feat-name">PRIME 肋沙朗</text>
+            <text class="feat-tag">按克计价</text>
+          </view>
+        </view>
+        <view class="feat-card" bindtap="goMenu">
+          <image class="feat-img" src="/images/food-grill.jpg" mode="aspectFill" lazy-load></image>
+          <view class="feat-info">
+            <text class="feat-name">干式熟成T骨</text>
+            <text class="feat-tag">28天·双人份</text>
+          </view>
+        </view>
+        <view class="feat-card" bindtap="goMenu">
+          <image class="feat-img" src="/images/food-burger1.jpg" mode="aspectFill" lazy-load></image>
+          <view class="feat-info">
+            <text class="feat-name">经典单层芝士堡</text>
+            <text class="feat-tag">¥38</text>
+          </view>
+        </view>
+        <view class="feat-card" bindtap="goMenu">
+          <image class="feat-img" src="/images/steak-hero.jpg" mode="aspectFill" lazy-load></image>
+          <view class="feat-info">
+            <text class="feat-name">澳洲M9和牛菲力</text>
+            <text class="feat-tag">顶级·入口即化</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- ── 快捷导航 ── -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">快速导航</text>
+      <text class="section-en">NAVIGATE</text>
+    </view>
+    <view class="nav-grid">
+      <view class="nav-card" bindtap="goMenu">
+        <view class="nav-icon-wrap red">
+          <text class="nav-icon">🥩</text>
+        </view>
+        <text class="nav-title">菜单</text>
+        <text class="nav-desc">前菜 · 牛排 · 饮品</text>
+      </view>
+      <view class="nav-card" bindtap="goSeating">
+        <view class="nav-icon-wrap dark">
+          <text class="nav-icon">🪑</text>
+        </view>
+        <text class="nav-title">选座预订</text>
+        <text class="nav-desc">选桌 · 在线预约</text>
+      </view>
+      <view class="nav-card" bindtap="goMember">
+        <view class="nav-icon-wrap gold">
+          <text class="nav-icon">🏆</text>
+        </view>
+        <text class="nav-title">会员中心</text>
+        <text class="nav-desc">积分 · 等级 · 兑换</text>
+      </view>
+      <view class="nav-card" bindtap="goShop">
+        <view class="nav-icon-wrap red">
+          <text class="nav-icon">🥩</text>
+        </view>
+        <text class="nav-title">肉铺</text>
+        <text class="nav-desc">鲜肉 · 65折 · 配送</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 品质承诺 ── -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">品质承诺</text>
+      <text class="section-en">OUR PROMISE</text>
+    </view>
+    <view class="promise-list">
+      <view class="promise-item">
+        <text class="promise-icon">🥩</text>
+        <view class="promise-text">
+          <text class="promise-title">USDA PRIME</text>
+          <text class="promise-desc">美国极佳级冰鲜牛肉</text>
+        </view>
+      </view>
+      <view class="promise-item">
+        <text class="promise-icon">🔥</text>
+        <view class="promise-text">
+          <text class="promise-title">荔枝木炭 900°C</text>
+          <text class="promise-desc">明火炙烤，果木烟熏香</text>
+        </view>
+      </view>
+      <view class="promise-item">
+        <text class="promise-icon">⏳</text>
+        <view class="promise-text">
+          <text class="promise-title">干式熟成</text>
+          <text class="promise-desc">28–42 天精心熟成工艺</text>
+        </view>
+      </view>
+      <view class="promise-item">
+        <text class="promise-icon">🏅</text>
+        <view class="promise-text">
+          <text class="promise-title">USMEF 认证</text>
+          <text class="promise-desc">美国肉类出口协会官方认证</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 环境展示 ── -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">餐厅环境</text>
+      <text class="section-en">AMBIANCE</text>
+    </view>
+    <view class="env-grid">
+      <view class="env-large">
+        <image class="env-img" src="/images/env-dining.jpg" mode="aspectFill" lazy-load></image>
+        <view class="env-caption"><text class="env-label">用餐区 · DINING</text></view>
+      </view>
+      <view class="env-small">
+        <image class="env-img" src="/images/env-bar.jpg" mode="aspectFill" lazy-load></image>
+        <view class="env-caption"><text class="env-label">酒吧区 · BAR</text></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 关于我们 ── -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">关于 SEAR STEAK</text>
+      <text class="section-en">ABOUT US</text>
+    </view>
+    <!-- 品牌故事 -->
+    <view class="about-story">
+      <text class="about-story-text">
+        SEAR STEAKHOUSE 坐落于天津五大道历史风貌区。2017年开业至今，只专注一件事：一块好牛排。"SEAR" 意为摄氏 230 度以上高温炙烤——不过度调味，不花哨摆盘，让牛肉本身说话。
+      </text>
+      <text class="about-story-text" style="margin-top: 20rpx;">
+        我们甄选 USDA Prime 极佳级冰鲜牛肉，经 28-42 天干式熟成，以荔枝木炭火 900°C 明火炙烤。SEAR STEAK 已获美国肉类出口协会(USMEF)官方认证，成为认证的美国牛肉品鉴餐厅。
+      </text>
+    </view>
+    <!-- USMEF认证卡片 -->
+    <view class="about-cert">
+      <view class="about-cert-header">
+        <text class="about-cert-badge">🏅</text>
+        <text class="about-cert-title">USMEF 认证美国牛肉品鉴餐厅</text>
+      </view>
+      <text class="about-cert-body">
+        美国肉类出口协会(U.S. Meat Export Federation)官方认证，严格选用 USDA Prime 牛肉，所有产品通过 USMEF 品质审核，确保每一位食客享用到纯正、安全、优质的美味。
+      </text>
+    </view>
+    <!-- 营业时间 + 人均 -->
+    <view class="about-info-card">
+      <view class="about-info-row">
+        <text class="about-info-icon">🕐</text>
+        <view class="about-info-content">
+          <text class="about-info-label">每日 DAILY</text>
+          <text class="about-info-value">11:30 - 21:30</text>
+        </view>
+      </view>
+      <view class="about-info-divider"></view>
+      <view class="about-info-row">
+        <text class="about-info-icon">💴</text>
+        <view class="about-info-content">
+          <text class="about-info-label">人均消费 PER PERSON</text>
+          <text class="about-info-value">约 ¥444</text>
+        </view>
+      </view>
+    </view>
+    <!-- 联系我们(电话) -->
+    <view class="about-call-btn" bindtap="makeCall">
+      <text class="about-call-icon">📞</text>
+      <text class="about-call-text">拨打电话 CALL US</text>
+      <text class="about-call-number">186 9055 0336</text>
+    </view>
+  </view>
+
+  <!-- ── Footer ── -->
+  <view class="footer">
+    <text class="footer-brand">SEAR STEAK · 囍er牛排馆</text>
+    <text class="footer-addr">天津市和平区常德道29号（五大道）</text>
+    <text class="footer-hours">每日 11:30 — 21:30 · 186 9055 0336</text>
+    <text class="admin-entry" bindtap="goAdmin"> </text>
+  </view>
+
+</view>

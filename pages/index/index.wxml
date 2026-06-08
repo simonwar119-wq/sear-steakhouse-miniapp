@@ -1,0 +1,9 @@
+<!-- pages/index/index.wxml -->
+<view class="splash">
+  <view class="logo-wrap">
+    <text class="brand-en">SEAR · STEAK</text>
+    <text class="brand-sub">COFFEE · BEER · DINNER</text>
+    <text class="brand-year">囍er · 2017</text>
+  </view>
+  <text class="loading-text">加载中...</text>
+</view>

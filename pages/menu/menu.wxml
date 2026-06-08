@@ -1,0 +1,70 @@
+<!-- pages/menu/menu.wxml -->
+<view class="menu-wrap">
+
+  <!-- Header -->
+  <view class="menu-header">
+    <text class="header-title">MENU</text>
+    <text class="header-sub">精选菜单</text>
+  </view>
+
+  <!-- Category Tabs -->
+  <scroll-view scroll-x class="tab-scroll" enhanced="true" show-scrollbar="false">
+    <view class="tab-bar">
+      <view
+        class="tab-item {{currentCat === index ? 'tab-active' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="index"
+        data-index="{{index}}"
+        bindtap="switchCat"
+      >
+        <text class="tab-icon">{{item.icon}}</text>
+        <text class="tab-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- Category Subtitle -->
+  <view class="cat-subtitle">
+    <text class="cat-en">{{categories[currentCat].en}}</text>
+  </view>
+
+  <!-- Menu Items -->
+  <view class="items-list">
+    <view
+      class="item-card"
+      wx:for="{{currentItems}}"
+      wx:key="id"
+    >
+      <!-- 图片区（部分菜有图） -->
+      <view class="item-img-wrap" wx:if="{{item.img}}">
+        <image class="item-img" src="{{item.img}}" mode="aspectFill" lazy-load></image>
+        <view class="item-img-badge" wx:if="{{item.badge}}">
+          <text class="badge-text">{{item.badge}}</text>
+        </view>
+      </view>
+
+      <!-- 文字区 -->
+      <view class="item-body">
+        <view class="item-name-row">
+          <view>
+            <text class="item-name">{{item.name}}</text>
+            <text class="item-en">{{item.en}}</text>
+          </view>
+          <text class="item-price">{{item.price}}</text>
+        </view>
+        <text class="item-desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+        <view class="item-tags" wx:if="{{item.tags && item.tags.length}}">
+          <text class="item-tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="menu-footer">
+    <text class="footer-note">· 所有牛排均使用美国PRIME级冰鲜牛肉 ·</text>
+    <text class="footer-note">· 荔枝木炭 900°C 明火炙烤 · USMEF官方认证 ·</text>
+    <text class="footer-hotline">预订电话：186 9055 0336</text>
+  </view>
+
+</view>

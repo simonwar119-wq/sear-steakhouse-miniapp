@@ -1,0 +1,539 @@
+.admin-wrap {
+  padding: 32rpx;
+  background: #0D0D0D;
+  min-height: 100vh;
+}
+
+.admin-header {
+  margin-bottom: 40rpx;
+}
+
+.admin-title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  letter-spacing: 4rpx;
+}
+
+.admin-sub {
+  display: block;
+  font-size: 22rpx;
+  color: #888888;
+  margin-top: 8rpx;
+  letter-spacing: 4rpx;
+}
+
+/* ── 管理员Tab ── */
+.admin-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32rpx;
+  background: #1A1A1A;
+  border-radius: 16rpx;
+  overflow: hidden;
+  border: 1rpx solid #242424;
+}
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 26rpx;
+  color: #888;
+  font-weight: 500;
+}
+.tab-active {
+  color: #C8171D;
+  background: rgba(200,23,29,0.08);
+  font-weight: 700;
+}
+
+/* ── 核销验证 ── */
+.redeem-verify-section {
+  margin-bottom: 24rpx;
+}
+.redeem-verify-result {
+  margin-top: 20rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+.result-valid {
+  background: rgba(39,174,96,0.10);
+  border: 1rpx solid rgba(39,174,96,0.3);
+}
+.result-invalid {
+  background: rgba(200,23,29,0.10);
+  border: 1rpx solid rgba(200,23,29,0.3);
+}
+.result-icon { font-size: 48rpx; }
+.result-info { text-align: center; }
+.result-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+.result-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.6;
+}
+.btn-confirm-redeem {
+  margin-top: 12rpx;
+  background: #C8171D;
+  color: #fff;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  padding: 16rpx 48rpx;
+  font-weight: 600;
+}
+
+/* 搜索区域 */
+.search-section {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 24rpx;
+  color: #888888;
+  letter-spacing: 2rpx;
+  margin-bottom: 16rpx;
+}
+
+.search-row {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.search-row .input-field {
+  flex: 1;
+  background: #242424;
+  border: 1rpx solid #333333;
+  border-radius: 8rpx;
+  padding: 24rpx 28rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+}
+
+.search-btn {
+  background: #C8171D;
+  border: none;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  padding: 24rpx 32rpx;
+  white-space: nowrap;
+}
+
+.search-btn::after { border: none; }
+
+/* 找到的会员卡片 */
+.found-member {
+  background: #0D1A0D;
+  border: 2rpx solid #4CAF50;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 32rpx;
+}
+
+.found-label {
+  display: block;
+  font-size: 22rpx;
+  color: #4CAF50;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+
+.found-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.found-info-item {
+  width: calc(50% - 8rpx);
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.found-info-label {
+  font-size: 20rpx;
+  color: #888888;
+}
+
+.found-info-value {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.points-highlight {
+  color: #4CAF50;
+  font-size: 32rpx;
+}
+
+.tier-text {
+  color: #C9A84C;
+}
+
+/* 添加积分区域 */
+.points-section {
+  margin-bottom: 40rpx;
+}
+
+.amount-input {
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 32rpx 28rpx;
+}
+
+.points-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1A2A1A;
+  border: 1rpx solid #4CAF50;
+  border-radius: 8rpx;
+  padding: 20rpx 28rpx;
+  margin-top: 16rpx;
+}
+
+.points-preview-label {
+  font-size: 26rpx;
+  color: #888888;
+}
+
+.points-preview-value {
+  font-size: 36rpx;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.btn-add-points {
+  background: #C8171D;
+  border: none;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 10rpx;
+  padding: 28rpx 0;
+  margin-top: 32rpx;
+  width: 100%;
+  letter-spacing: 4rpx;
+}
+
+.btn-add-points::after { border: none; }
+
+.btn-add-points[disabled] {
+  opacity: 0.4;
+}
+
+.input-field {
+  background: #242424;
+  border: 1rpx solid #333333;
+  border-radius: 8rpx;
+  padding: 24rpx 28rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 管理员授权 */
+.admin-grant-row {
+  margin-bottom: 24rpx;
+}
+.admin-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1A2A1A;
+  border: 1rpx solid #2E5A2E;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+}
+.admin-badge-txt {
+  font-size: 26rpx;
+  color: #4CAF50;
+}
+.btn-grant {
+  background: #1A2A1A;
+  border: 1rpx solid #2E5A2E;
+  border-radius: 12rpx;
+  padding: 22rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  color: #4CAF50;
+  font-weight: 600;
+}
+.btn-revoke {
+  font-size: 22rpx;
+  color: #C8171D;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #C8171D;
+  border-radius: 8rpx;
+}
+
+/* 小程序码 */
+.qr-section {
+  background: #1A1A1A;
+  border: 1rpx solid #2A2A2A;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+}
+.qr-desc {
+  display: block;
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 8rpx;
+  margin-bottom: 24rpx;
+  line-height: 1.6;
+}
+.qr-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+.qr-img {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 12rpx;
+  background: #fff;
+}
+.qr-tip {
+  font-size: 20rpx;
+  color: #555;
+  margin-top: 12rpx;
+}
+.btn-gen-qr {
+  background: #1E3A1E;
+  border: 1rpx solid #2E6A2E;
+  color: #4CAF50;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-radius: 10rpx;
+  padding: 22rpx 0;
+  width: 100%;
+}
+.btn-gen-qr::after { border: none; }
+
+/* 最近操作记录 */
+.history-section {
+  margin-top: 16rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 24rpx;
+  color: #888888;
+  letter-spacing: 2rpx;
+  margin-bottom: 20rpx;
+}
+
+.history-item {
+  background: #1A1A1A;
+  border: 1rpx solid #2A2A2A;
+  border-radius: 10rpx;
+  padding: 24rpx 28rpx;
+  margin-bottom: 12rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.history-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-date {
+  display: block;
+  font-size: 20rpx;
+  color: #666666;
+}
+
+.history-member {
+  display: block;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+  margin-top: 4rpx;
+}
+
+.history-right {
+  text-align: right;
+}
+
+.history-amount {
+  display: block;
+  font-size: 28rpx;
+  color: #CCCCCC;
+}
+
+.history-points {
+  display: block;
+  font-size: 24rpx;
+  color: #4CAF50;
+  margin-top: 2rpx;
+}
+
+.history-staff {
+  width: 100%;
+  font-size: 20rpx;
+  color: #555555;
+  margin-top: 6rpx;
+}
+
+/* 通用 */
+.center-wrap {
+  min-height: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 40rpx;
+  color: #888888;
+  font-size: 28rpx;
+}
+
+.no-access {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20rpx;
+}
+
+.no-access-icon { font-size: 80rpx; }
+.no-access-title { font-size: 36rpx; color: #FFFFFF; font-weight: bold; }
+.no-access-desc { font-size: 26rpx; color: #888888; }
+
+/* ── 预订管理 ── */
+.booking-section {
+  margin-bottom: 32rpx;
+}
+.booking-date-row {
+  margin-bottom: 24rpx;
+}
+.booking-date-picker {
+  background: #242424;
+  border: 1rpx solid #333;
+  border-radius: 8rpx;
+  padding: 20rpx 24rpx;
+  color: #fff;
+  font-size: 28rpx;
+}
+.booking-item {
+  background: #1A1A1A;
+  border: 1rpx solid #2A2A2A;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 14rpx;
+}
+.bi-top {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 10rpx;
+}
+.bi-time {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #C8171D;
+}
+.bi-table {
+  font-size: 24rpx;
+  color: #aaa;
+  flex: 1;
+}
+.bi-guests {
+  font-size: 22rpx;
+  color: #888;
+}
+.bi-mid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 10rpx;
+}
+.bi-name {
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: 600;
+}
+.bi-phone {
+  font-size: 24rpx;
+  color: #888;
+}
+.bi-code {
+  font-size: 22rpx;
+  color: #555;
+  margin-left: auto;
+}
+.bi-bot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+  align-items: center;
+}
+.bi-status {
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+.bi-status.st-pending { background: rgba(255,167,38,0.15); color: #ffa726; }
+.bi-status.st-arrived { background: rgba(76,175,80,0.15); color: #4CAF50; }
+.bi-status.st-no-show { background: rgba(200,23,29,0.15); color: #ff6b6b; }
+.bi-status.st-cancelled { background: rgba(136,136,136,0.1); color: #666; }
+.bi-deposit {
+  font-size: 20rpx;
+  font-weight: 600;
+}
+.bi-member-tag {
+  font-size: 18rpx;
+  color: #C9A84C;
+  background: rgba(201,168,76,0.1);
+  padding: 2rpx 12rpx;
+  border-radius: 16rpx;
+}
+.bi-strikes {
+  font-size: 18rpx;
+  color: #ff6b6b;
+}
+.bi-actions {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 14rpx;
+  padding-top: 14rpx;
+  border-top: 1rpx solid #2A2A2A;
+}
+.bi-btn {
+  flex: 1;
+  text-align: center;
+  padding: 18rpx 0;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+.bi-btn.arrive { background: rgba(76,175,80,0.15); color: #4CAF50; border: 1rpx solid rgba(76,175,80,0.3); }
+.bi-btn.noshow { background: rgba(200,23,29,0.1); color: #ff6b6b; border: 1rpx solid rgba(200,23,29,0.3); }
+.bi-btn.refund { background: rgba(255,167,38,0.1); color: #ffa726; border: 1rpx solid rgba(255,167,38,0.3); }
+.bi-btn:active { opacity: 0.7; }

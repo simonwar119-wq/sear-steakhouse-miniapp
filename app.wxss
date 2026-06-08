@@ -1,0 +1,125 @@
+/* ===== SEAR STEAK 全局样式 ===== */
+/* 品牌色：黑底 #0D0D0D · 红色 #C8171D · 金色 #C9A84C */
+
+page {
+  background-color: #0D0D0D;
+  color: #FFFFFF;
+  font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+}
+
+/* 主按钮 */
+.btn-primary {
+  display: block;
+  width: 100%;
+  background: #C8171D;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  letter-spacing: 6rpx;
+  padding: 28rpx 0;
+  text-align: center;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+/* 描边按钮 */
+.btn-ghost {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: #C8171D;
+  border: 2rpx solid #C8171D;
+  border-radius: 4rpx;
+  font-size: 30rpx;
+  letter-spacing: 4rpx;
+  padding: 26rpx 0;
+  text-align: center;
+}
+
+.btn-ghost::after {
+  border: none;
+}
+
+/* 卡片容器 */
+.card {
+  background: #1A1A1A;
+  border-radius: 12rpx;
+  padding: 40rpx;
+  margin-bottom: 24rpx;
+}
+
+.card-border {
+  background: #1A1A1A;
+  border-radius: 12rpx;
+  padding: 40rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #2A2A2A;
+}
+
+/* 分割线 */
+.divider {
+  height: 1rpx;
+  background: #2A2A2A;
+  margin: 32rpx 0;
+}
+
+/* 标签文字 */
+.label {
+  font-size: 24rpx;
+  color: #888888;
+  letter-spacing: 2rpx;
+  margin-bottom: 10rpx;
+}
+
+/* 红色强调 */
+.text-red {
+  color: #C8171D;
+}
+
+/* 金色强调 */
+.text-gold {
+  color: #C9A84C;
+}
+
+/* 灰色文字 */
+.text-muted {
+  color: #888888;
+}
+
+/* 成功绿色 */
+.text-success {
+  color: #4CAF50;
+}
+
+/* 页面内边距 */
+.page-padding {
+  padding: 32rpx;
+}
+
+/* 输入框 */
+.input-field {
+  background: #242424;
+  border: 1rpx solid #333333;
+  border-radius: 8rpx;
+  padding: 24rpx 28rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 加载遮罩 */
+.loading-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}

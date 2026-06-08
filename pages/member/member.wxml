@@ -1,0 +1,109 @@
+<!-- pages/home/home.wxml -->
+<scroll-view scroll-y style="height:100vh" refresher-enabled="true" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresherRefresh">
+<view class="home-wrap" wx:if="{{!loading && member}}">
+
+  <!-- 会员卡 -->
+  <view class="member-card">
+    <view class="card-header">
+      <view>
+        <text class="card-brand">SEAR · STEAK</text>
+        <text class="card-sub">PRIME MEMBERSHIP</text>
+      </view>
+      <view class="tier-badge" style="border-color:{{tierColor}}; color:{{tierColor}}">
+        {{tierName}}
+      </view>
+    </view>
+
+    <!-- 生日月提示 -->
+    <view class="birthday-banner" wx:if="{{isBirthMonth}}">
+      🎂 生日月快乐！本月消费享额外优惠，出示此页告知服务员
+    </view>
+
+    <view class="card-name">{{member.name}}</view>
+    <view class="card-phone">{{member.phone}}</view>
+
+    <!-- 当前积分 -->
+    <view class="points-display">
+      <view class="points-main">
+        <text class="points-num">{{member.currentPoints}}</text>
+        <text class="points-unit">积分</text>
+      </view>
+      <view class="discount-pill" wx:if="{{discountText !== '暂无折扣'}}">
+        {{discountText}}
+      </view>
+    </view>
+
+    <!-- 升级进度条（金卡不显示） -->
+    <view class="progress-wrap" wx:if="{{nextTierName}}">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width:{{progress}}%"></view>
+      </view>
+      <view class="progress-labels">
+        <text class="text-muted" style="font-size:22rpx">累计 {{member.cumulativePoints}} 分</text>
+        <text class="text-muted" style="font-size:22rpx">{{nextTierPoints}}分升{{nextTierName}}</text>
+      </view>
+    </view>
+    <view wx:else class="gold-tip">
+      <text>已达最高等级 · 感谢您的支持</text>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view class="action-btn" bindtap="goRewards">
+      <text class="action-icon">🍷</text>
+      <text class="action-text">积分兑换</text>
+      <text class="action-sub">葡萄酒 · 折扣</text>
+    </view>
+  </view>
+
+  <!-- 积分说明 -->
+  <view class="info-card">
+    <text class="section-label">积分规则</text>
+    <view class="rule-row">
+      <text class="rule-dot">◆</text>
+      <text class="rule-text">消费1元 = 1积分，联系员工录入</text>
+    </view>
+    <view class="rule-row">
+      <text class="rule-dot">◆</text>
+      <text class="rule-text">3,000分可兑换阿图斯葡萄酒一瓶（¥368）</text>
+    </view>
+    <view class="rule-row">
+      <text class="rule-dot">◆</text>
+      <text class="rule-text">累计满5,000分永久9折 / 满10,000分永久8.5折</text>
+    </view>
+    <view class="rule-row">
+      <text class="rule-dot">◆</text>
+      <text class="rule-text">1年无消费，当前积分自动清零（等级保留）</text>
+    </view>
+  </view>
+
+  <!-- 最近消费记录 -->
+  <view class="info-card" wx:if="{{transactions.length > 0}}">
+    <text class="section-label">最近积分记录</text>
+    <view class="tx-row" wx:for="{{transactions}}" wx:key="_id">
+      <view>
+        <text class="tx-type">{{item.typeLabel}}</text>
+        <text class="tx-date">{{item.dateStr}}</text>
+      </view>
+      <text class="tx-points {{item.pointsDelta > 0 ? 'points-plus' : 'points-minus'}}">
+        {{item.pointsDelta > 0 ? '+' : ''}}{{item.pointsDelta}}
+      </text>
+    </view>
+  </view>
+
+</view>
+
+  <!-- 推荐给朋友 -->
+  <view class="share-section">
+    <button class="share-btn" open-type="share">
+      <text class="share-icon">🥩</text>
+      <text class="share-text">推荐给朋友</text>
+    </button>
+  </view>
+
+<!-- 加载中 -->
+<view class="loading-wrap" wx:if="{{loading}}">
+  <text class="loading-txt">加载中...</text>
+</view>
+</scroll-view>

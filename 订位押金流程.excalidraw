@@ -1,0 +1,54 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {"type": "text", "id": "title", "x": 60, "y": 20, "text": "订位+押金流程设计", "fontSize": 28, "fontFamily": 1, "strokeColor": "#C8171D", "originalText": "订位+押金流程设计", "autoResize": true},
+    
+    {"type": "text", "id": "flow_title", "x": 40, "y": 70, "text": "预订流程（简化版）", "fontSize": 20, "fontFamily": 1, "strokeColor": "#1e1e1e", "originalText": "预订流程（简化版）", "autoResize": true},
+    
+    {"type": "rectangle", "id": "step1", "x": 60, "y": 110, "width": 220, "height": 70, "roundness": {"type": 3}, "backgroundColor": "#a5d8ff", "fillStyle": "solid", "boundElements": [{"id": "t_s1", "type": "text"}]},
+    {"type": "text", "id": "t_s1", "x": 65, "y": 130, "width": 210, "height": 30, "text": "① 选座位（原图保留）", "fontSize": 18, "fontFamily": 1, "strokeColor": "#1e1e1e", "textAlign": "center", "verticalAlign": "middle", "containerId": "step1", "originalText": "① 选座位（原图保留）", "autoResize": true},
+    
+    {"type": "arrow", "id": "arr1", "x": 280, "y": 145, "width": 60, "height": 0, "endArrowhead": "arrow", "points": [[0,0],[60,0]]},
+    
+    {"type": "rectangle", "id": "step2", "x": 340, "y": 110, "width": 240, "height": 70, "roundness": {"type": 3}, "backgroundColor": "#d0bfff", "fillStyle": "solid", "boundElements": [{"id": "t_s2", "type": "text"}]},
+    {"type": "text", "id": "t_s2", "x": 345, "y": 130, "width": 230, "height": 30, "text": "② 填写信息（姓名/日期/时段）", "fontSize": 18, "fontFamily": 1, "strokeColor": "#1e1e1e", "textAlign": "center", "verticalAlign": "middle", "containerId": "step2", "originalText": "② 填写信息（姓名/日期/时段）", "autoResize": true},
+    
+    {"type": "arrow", "id": "arr2", "x": 580, "y": 145, "width": 60, "height": 0, "endArrowhead": "arrow", "points": [[0,0],[60,0]]},
+    
+    {"type": "diamond", "id": "check", "x": 640, "y": 100, "width": 200, "height": 90, "roundness": {"type": 3}, "backgroundColor": "#fff3bf", "fillStyle": "solid", "boundElements": [{"id": "t_check", "type": "text"}]},
+    {"type": "text", "id": "t_check", "x": 645, "y": 130, "width": 190, "height": 30, "text": "③ 判断会员身份", "fontSize": 18, "fontFamily": 1, "strokeColor": "#1e1e1e", "textAlign": "center", "verticalAlign": "middle", "containerId": "check", "originalText": "③ 判断会员身份", "autoResize": true},
+    
+    {"type": "text", "id": "l_member", "x": 640, "y": 195, "text": "是 → 有消费记录?", "fontSize": 16, "fontFamily": 1, "strokeColor": "#1e1e1e", "originalText": "是 → 有消费记录?", "autoResize": true},
+    
+    {"type": "arrow", "id": "arr_yes", "x": 720, "y": 195, "width": 0, "height": 45, "endArrowhead": "arrow", "points": [[0,0],[0,45]], "strokeColor": "#2f9e44"},
+    
+    {"type": "rectangle", "id": "free", "x": 640, "y": 240, "width": 200, "height": 60, "roundness": {"type": 3}, "backgroundColor": "#b2f2bb", "fillStyle": "solid", "boundElements": [{"id": "t_free", "type": "text"}]},
+    {"type": "text", "id": "t_free", "x": 645, "y": 255, "width": 190, "height": 30, "text": "✅ 免押金 直接出卡", "fontSize": 16, "fontFamily": 1, "strokeColor": "#1e1e1e", "textAlign": "center", "verticalAlign": "middle", "containerId": "free", "originalText": "✅ 免押金 直接出卡", "autoResize": true},
+    
+    {"type": "text", "id": "l_no", "x": 550, "y": 215, "text": "←否 非会员/无记录", "fontSize": 16, "fontFamily": 1, "strokeColor": "#e03131", "originalText": "←否 非会员/无记录", "autoResize": true},
+    
+    {"type": "arrow", "id": "arr_no", "x": 640, "y": 225, "width": -80, "height": 60, "endArrowhead": "arrow", "points": [[0,0],[-80,0],[0,60]], "strokeColor": "#e03131"},
+    
+    {"type": "rectangle", "id": "deposit", "x": 480, "y": 300, "width": 240, "height": 70, "roundness": {"type": 3}, "backgroundColor": "#ffc9c9", "fillStyle": "solid", "boundElements": [{"id": "t_dep", "type": "text"}]},
+    {"type": "text", "id": "t_dep", "x": 485, "y": 315, "width": 230, "height": 40, "text": "④ 微信支付 押金¥100\n（调用 wx.requestPayment）", "fontSize": 16, "fontFamily": 1, "strokeColor": "#1e1e1e", "textAlign": "center", "verticalAlign": "middle", "containerId": "deposit", "originalText": "④ 微信支付 押金¥100\n（调用 wx.requestPayment）", "autoResize": true},
+    
+    {"type": "arrow", "id": "arr_pay", "x": 600, "y": 370, "width": 0, "height": 40, "endArrowhead": "arrow", "points": [[0,0],[0,40]]},
+    
+    {"type": "rectangle", "id": "step5", "x": 520, "y": 410, "width": 200, "height": 60, "roundness": {"type": 3}, "backgroundColor": "#a5d8ff", "fillStyle": "solid", "boundElements": [{"id": "t_s5", "type": "text"}]},
+    {"type": "text", "id": "t_s5", "x": 525, "y": 430, "width": 190, "height": 20, "text": "⑤ 出邀请卡（含预订码）", "fontSize": 16, "fontFamily": 1, "strokeColor": "#1e1e1e", "textAlign": "center", "verticalAlign": "middle", "containerId": "step5", "originalText": "⑤ 出邀请卡（含预订码）", "autoResize": true},
+    
+    {"type": "arrow", "id": "arr_free2", "x": 740, "y": 270, "width": 200, "height": 160, "endArrowhead": "arrow", "points": [[0,0],[200,0],[0,160],[-200,0]], "strokeColor": "#2f9e44", "strokeStyle": "dashed"},
+    
+    {"type": "text", "id": "tab_info", "x": 40, "y": 520, "text": "Tab栏变化: 选座 → 订位    更多 → 肉铺", "fontSize": 20, "fontFamily": 1, "strokeColor": "#C8171D", "originalText": "Tab栏变化: 选座 → 订位    更多 → 肉铺", "autoResize": true},
+    
+    {"type": "text", "id": "deposit_note", "x": 40, "y": 560, "fontSize": 16, "fontFamily": 1, "strokeColor": "#1e1e1e",
+     "text": "押金说明：\n- 会员（cumulativePoints > 0）：免押金，直接出卡\n- 非会员 / 无任何消费记录会员：押金¥100\n- 到店后联系员工取消押金（后台释放）\n- 未到店：押金不退还（防跑单）",
+     "originalText": "押金说明：\n- 会员（cumulativePoints > 0）：免押金，直接出卡\n- 非会员 / 无任何消费记录会员：押金¥100\n- 到店后联系员工取消押金（后台释放）\n- 未到店：押金不退还（防跑单）",
+     "autoResize": true}
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  }
+}

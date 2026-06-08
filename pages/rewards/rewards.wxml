@@ -1,0 +1,107 @@
+<!-- pages/rewards/rewards.wxml -->
+<view class="rewards-wrap">
+
+  <view wx:if="{{!loading && member}}">
+
+    <!-- 当前积分摘要 -->
+    <view class="points-summary">
+      <text class="summary-label">当前可用积分</text>
+      <text class="summary-points">{{member.currentPoints}}</text>
+      <text class="summary-cum">累计积分 {{member.cumulativePoints}}</text>
+    </view>
+
+    <!-- 等级与折扣特权 -->
+    <view class="section-title">折扣特权</view>
+
+    <!-- 普通 → 银卡 -->
+    <view class="reward-card {{member.cumulativePoints >= 5000 ? 'card-unlocked' : 'card-locked'}}">
+      <view class="reward-card-top">
+        <view>
+          <text class="reward-tier-name silver">银卡会员</text>
+          <text class="reward-tier-desc">全场永久9折</text>
+        </view>
+        <view class="reward-status">
+          <text wx:if="{{member.cumulativePoints >= 5000}}" class="status-unlocked">已解锁 ✓</text>
+          <text wx:else class="status-locked">累计 {{5000 - member.cumulativePoints > 0 ? 5000 - member.cumulativePoints : 0}} 分可解锁</text>
+        </view>
+      </view>
+      <view class="reward-progress-bar" wx:if="{{member.cumulativePoints < 5000}}">
+        <view class="reward-progress-fill" style="width:{{(member.cumulativePoints / 5000 * 100)}}%"></view>
+      </view>
+    </view>
+
+    <!-- 银卡 → 金卡 -->
+    <view class="reward-card {{member.cumulativePoints >= 10000 ? 'card-unlocked-gold' : 'card-locked'}}">
+      <view class="reward-card-top">
+        <view>
+          <text class="reward-tier-name gold">金卡会员</text>
+          <text class="reward-tier-desc">全场永久8.5折</text>
+        </view>
+        <view class="reward-status">
+          <text wx:if="{{member.cumulativePoints >= 10000}}" class="status-unlocked-gold">已解锁 ✓</text>
+          <text wx:else class="status-locked">累计 {{10000 - member.cumulativePoints > 0 ? 10000 - member.cumulativePoints : 0}} 分可解锁</text>
+        </view>
+      </view>
+      <view class="reward-progress-bar" wx:if="{{member.cumulativePoints < 10000}}">
+        <view class="reward-progress-fill gold-fill" style="width:{{(member.cumulativePoints / 10000 * 100)}}%"></view>
+      </view>
+    </view>
+
+    <!-- 积分兑换 -->
+    <view class="section-title" style="margin-top:16rpx">积分兑换</view>
+
+    <view class="wine-card">
+      <view class="wine-card-left">
+        <text class="wine-icon">🍷</text>
+        <view>
+          <text class="wine-name">阿图斯葡萄酒</text>
+          <text class="wine-price">市场价 ¥368</text>
+          <text class="wine-cost">消耗 3,000 积分</text>
+        </view>
+      </view>
+      <button
+        class="{{member.currentPoints >= 3000 ? 'redeem-btn-active' : 'redeem-btn-disabled'}}"
+        bindtap="redeemWine"
+        loading="{{confirming}}"
+        disabled="{{confirming}}"
+      >
+        {{member.currentPoints >= 3000 ? '立即兑换' : '积分不足'}}
+      </button>
+    </view>
+
+    <!-- 兑换说明 -->
+    <view class="exchange-tips">
+      <text class="tips-title-sm">兑换说明</text>
+      <view class="tip-item">◆ 兑换后请出示兑换凭证给服务员核销</view>
+      <view class="tip-item">◆ 葡萄酒当次用餐使用，不可外带兑换</view>
+      <view class="tip-item">◆ 折扣特权每次消费出示会员页即可享受</view>
+      <view class="tip-item">◆ 积分1年内无消费自动清零，等级永久保留</view>
+    </view>
+
+  </view>
+
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <text style="color:#555">加载中...</text>
+  </view>
+
+  <!-- 核销码弹层 -->
+  <view class="redeem-overlay" wx:if="{{redeemResult}}" bindtap="closeRedeemResult">
+    <view class="redeem-card" catchtap="">
+      <text class="redeem-icon">🎉</text>
+      <text class="redeem-title">兑换成功</text>
+      <text class="redeem-reward-name">{{redeemResult.reward}}</text>
+      <view class="redeem-code-box">
+        <text class="redeem-code-label">核销码</text>
+        <text class="redeem-code">{{redeemResult.code}}</text>
+        <text class="redeem-code-tip">到店后告知服务员此核销码</text>
+      </view>
+      <view class="redeem-info">
+        <text class="redeem-info-item">消耗积分：{{redeemResult.points}} 分</text>
+        <text class="redeem-info-item">剩余积分：{{redeemResult.remaining}} 分</text>
+        <text class="redeem-info-item">有效期至：{{redeemResult.expire}}</text>
+      </view>
+      <button class="redeem-close-btn" bindtap="closeRedeemResult">我知道了</button>
+    </view>
+  </view>
+
+</view>
